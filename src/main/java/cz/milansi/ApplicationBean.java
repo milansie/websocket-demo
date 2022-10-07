@@ -1,8 +1,10 @@
 package cz.milansi;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.omnifaces.config.OmniFaces;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.push.Push;
 import javax.faces.push.PushContext;
 import javax.inject.Inject;
@@ -111,5 +113,15 @@ public class ApplicationBean implements Serializable {
         });
     }
 
+    public String getJsfVersion() {
+        Package jsf = FacesContext.class.getPackage();
+        return jsf.getImplementationVendor() + " / " + jsf.getImplementationTitle() + " / "
+                + jsf.getImplementationVersion();
+    }
+
+    public String getOmniVersion() {
+        Package omniFaces = OmniFaces.class.getPackage();
+        return omniFaces.getImplementationTitle() + " / " + omniFaces.getImplementationVersion();
+    }
 
 }

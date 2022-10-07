@@ -57,9 +57,14 @@
           onclose="console.log (getDateTime() + ': close omniFutureChannel')"
           onmessage="onMessage" />
 
+    <h:outputLabel value="#{applicationBean.getJsfVersion()}" />
+    <br />
+    <h:outputLabel value="#{applicationBean.getOmniVersion()}" />
+    <hr />
+
   <h:form id="simpleForm">
 
-      <h:inputText value="#{sessionBean.user}" > <f:ajax event="change"/></h:inputText>
+     User: <h:inputText value="#{sessionBean.user}" > <f:ajax event="change"/></h:inputText>
 
       <h:commandButton value="submit" />
     <hr />
@@ -97,9 +102,9 @@
     Channel for scheduler:
 
     <h:selectOneMenu id="selectChannelForScheduler" value="#{schedulerBean.schedulerChannelType}">
-        <f:selectItem itemValue="SIMPLE" itemLabel="myfaces simple"/>
-        <f:selectItem itemValue="FUTURE" itemLabel="myfaces future"/>
-        <f:selectItem itemValue="USER" itemLabel="myfaces user"/>
+        <f:selectItem itemValue="SIMPLE" itemLabel="jsf simple"/>
+        <f:selectItem itemValue="FUTURE" itemLabel="jsf future"/>
+        <f:selectItem itemValue="USER" itemLabel="jsf user"/>
         <f:selectItem itemValue="OMNISIMPLE" itemLabel="omni simple" />
         <f:selectItem itemValue="OMNIFUTURE" itemLabel="omni future"/>
         <f:selectItem itemValue="OMNIUSER" itemLabel="omni user"/>

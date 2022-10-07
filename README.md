@@ -1,5 +1,6 @@
 # websocket-demo
-simple demo to compare differences between myfaces (2.3-next) and omnifaces websocket implementation
+simple demo to compare differences between myfaces, mojarra and omnifaces websocket implementation
+just change maven profile to use desired jsf implementation
 
 *note: use myfaces-2.3-next-M8 or later to work correctly*
 
