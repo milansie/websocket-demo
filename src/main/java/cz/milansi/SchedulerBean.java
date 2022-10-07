@@ -13,15 +13,15 @@ import java.io.Serializable;
 @Named
 public class SchedulerBean implements Serializable {
 
-
     private String schedulerChannelType = "SIMPLE";
 
+    private String externalUser = "nobody";
+
     @Inject
-    private transient TestBean bean;
+    private transient ApplicationBean bean;
 
     @Cron(cronExpression = "*/10 * * * * ?")
     public void atSchedule() throws InterruptedException {
-
 
         switch (schedulerChannelType) {
             case "SIMPLE":
@@ -30,12 +30,32 @@ public class SchedulerBean implements Serializable {
             case "OMNISIMPLE":
                 bean.omniSimplePush("Sch");
                 break;
+            case "OMNIUSER":
+                bean.omniSimpleUserPush("Sch", externalUser);
+                if (externalUser.contains(",")) {
+                    String[] userArray = externalUser.split(",");
+                    for (String s : userArray) {
+                        bean.omniSimpleUserPush("Sch", s);
+                    }
+                } else {
+                    bean.omniSimpleUserPush("Sch", externalUser);
+                }
+                break;
             case "FUTURE":
                 bean.futurePush("Sch");
                 break;
             case "OMNIFUTURE":
                 bean.omniFuturePush("Sch");
                 break;
+            case "USER":
+                if (externalUser.contains(",")) {
+                    String[] userArray = externalUser.split(",");
+                    bean.simpleUserPush("Sch", userArray);
+                } else {
+                    bean.simpleUserPush("Sch", externalUser);
+                }
+                break;
+
             default:
                 bean.simplePush("Sch");
         }
@@ -48,5 +68,13 @@ public class SchedulerBean implements Serializable {
 
     public void setSchedulerChannelType(String schedulerChannelType) {
         this.schedulerChannelType = schedulerChannelType;
+    }
+
+    public String getExternalUser() {
+        return externalUser;
+    }
+
+    public void setExternalUser(String externalUser) {
+        this.externalUser = externalUser;
     }
 }

@@ -15,52 +15,81 @@
   <f:websocket
           id="simpleChannel"
           channel="simpleChannel"
-          onopen="console.log ('open simpleChannel')"
-          onclose="console.log ('close simpleChannel')"
+          onopen="console.log (getDateTime() + ': open simpleChannel')"
+          onclose="console.log (getDateTime() + ': close simpleChannel')"
           onmessage="onMessage" />
 
-  <f:websocket
+    <f:websocket
+            id="simpleUserChannel"
+            channel="simpleUserChannel"
+            onopen="console.log (getDateTime() + ': open simpleUserChannel')"
+            onclose="console.log (getDateTime() + ': close simpleUserChannel')"
+            user="#{sessionBean.user}"
+            scope="session"
+            onmessage="onMessage" />
+
+    <f:websocket
           id="futureChannel"
           channel="futureChannel"
-          onopen="console.log ('open futureChannel')"
-          onclose="console.log ('close futureChannel')"
+          onopen="console.log (getDateTime() + ': open futureChannel')"
+          onclose="console.log (getDateTime() + ': close futureChannel')"
           onmessage="onMessage" />
-
-
 
   <o:socket
           id="omniSimpleChannel"
           channel="omniSimpleChannel"
-          onopen="console.log ('open omniSimpleChannel')"
-          onclose="console.log ('close omniSimpleChannel')"
+          onopen="console.log (getDateTime() + ': open omniSimpleChannel')"
+          onclose="console.log (getDateTime() + ': close omniSimpleChannel')"
           onmessage="onMessage" />
+
+    <o:socket
+            id="omniSimpleUserChannel"
+            channel="omniSimpleUserChannel"
+            onopen="console.log (getDateTime() + ': open omniSimpleUserChannel')"
+            onclose="console.log (getDateTime() + ': close omniSimpleUserChannel')"
+            user="#{sessionBean.user}"
+            onmessage="onMessage" />
 
   <o:socket
           id="omniFutureChannel"
           channel="omniFutureChannel"
-          onopen="console.log ('open omniFutureChannel')"
-          onclose="console.log ('close omniFutureChannel')"
+          onopen="console.log (getDateTime() + ': open omniFutureChannel')"
+          onclose="console.log (getDateTime() + ': close omniFutureChannel')"
           onmessage="onMessage" />
 
   <h:form id="simpleForm">
 
+      <h:inputText value="#{sessionBean.user}" > <f:ajax event="change"/></h:inputText>
 
-    <h:commandButton id="simpleChannelPush" value="myfaces simple push" action="#{testBean.simplePush('WEB')}">
+      <h:commandButton value="submit" />
+    <hr />
+
+    <h:commandButton id="simpleChannelPush" value="jsf simple push" action="#{sessionBean.simplePush('WEB')}">
       <f:ajax />
     </h:commandButton>
     <br />
 
-    <h:commandButton id="futurePush" value="myfaces future push" action="#{testBean.futurePush('WEB')}">
+    <h:commandButton id="simpleUserChannelPush" value="jsf simple user push" action="#{sessionBean.simpleUserPush('WEB')}">
+          <f:ajax />
+    </h:commandButton>
+    <br />
+
+    <h:commandButton id="futurePush" value="jsf future push" action="#{sessionBean.futurePush('WEB')}">
       <f:ajax />
     </h:commandButton>
     <br />
 
-    <h:commandButton id="omniSmpleChannelPush" value="omni simple push" action="#{testBean.omniSimplePush('WEB')}">
+    <h:commandButton id="omniSimpleChannelPush" value="omni simple push" action="#{sessionBean.omniSimplePush('WEB')}">
       <f:ajax />
     </h:commandButton>
     <br />
 
-    <h:commandButton id="omniFuturePush" value="omni future push" action="#{testBean.omniFuturePush('WEB')}">
+    <h:commandButton id="omniSimpleUserChannelPush" value="omni simple user push" action="#{sessionBean.omniSimpleUserPush('WEB')}">
+        <f:ajax />
+    </h:commandButton>
+    <br />
+
+    <h:commandButton id="omniFuturePush" value="omni future push" action="#{sessionBean.omniFuturePush('WEB')}">
       <f:ajax />
     </h:commandButton>
     <br /><br />
@@ -70,10 +99,16 @@
     <h:selectOneMenu id="selectChannelForScheduler" value="#{schedulerBean.schedulerChannelType}">
         <f:selectItem itemValue="SIMPLE" itemLabel="myfaces simple"/>
         <f:selectItem itemValue="FUTURE" itemLabel="myfaces future"/>
+        <f:selectItem itemValue="USER" itemLabel="myfaces user"/>
         <f:selectItem itemValue="OMNISIMPLE" itemLabel="omni simple" />
         <f:selectItem itemValue="OMNIFUTURE" itemLabel="omni future"/>
+        <f:selectItem itemValue="OMNIUSER" itemLabel="omni user"/>
         <f:ajax />
     </h:selectOneMenu>
+
+      <h:inputText id="schedulerUser" value="#{schedulerBean.externalUser}">
+          <f:ajax />
+      </h:inputText>
 
     <br /><br />
     OUTPUT:
