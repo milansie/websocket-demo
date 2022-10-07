@@ -74,7 +74,8 @@ public class ApplicationBean implements Serializable {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException irex) {
-                        //
+                        // Restore interrupted state...
+                        Thread.currentThread().interrupt();
                     }
 
                     return randomString;
@@ -98,7 +99,8 @@ public class ApplicationBean implements Serializable {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException irex) {
-                        //
+                        // Restore interrupted state...
+                        Thread.currentThread().interrupt();
                     }
 
                     return randomString;

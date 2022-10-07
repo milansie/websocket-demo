@@ -21,7 +21,7 @@ public class SchedulerBean implements Serializable {
     private transient ApplicationBean bean;
 
     @Cron(cronExpression = "*/10 * * * * ?")
-    public void atSchedule() throws InterruptedException {
+    public void atSchedule() {
 
         switch (schedulerChannelType) {
             case "SIMPLE":
