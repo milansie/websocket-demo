@@ -1,6 +1,7 @@
 package cz.milansi;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -43,5 +44,10 @@ public class SessionBean implements Serializable {
 
     public void omniFuturePush(String s) {
         applicationBean.omniFuturePush(s);
+    }
+
+    public String invalidateSession() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/?faces-redirect=true";
     }
 }

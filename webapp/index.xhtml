@@ -67,6 +67,10 @@
      User: <h:inputText value="#{sessionBean.user}" > <f:ajax event="change"/></h:inputText>
 
       <h:commandButton value="submit" />
+
+
+      <h:commandLink style="float:right" value="Invalidate session" action="#{sessionBean.invalidateSession()}" >
+      </h:commandLink>
     <hr />
 
     <h:commandButton id="simpleChannelPush" value="jsf simple push" action="#{sessionBean.simplePush('WEB')}">

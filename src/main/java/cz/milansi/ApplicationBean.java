@@ -126,4 +126,6 @@ public class ApplicationBean implements Serializable {
         return omniFaces.getImplementationTitle() + " / " + omniFaces.getImplementationVersion();
     }
 
+
+
 }
