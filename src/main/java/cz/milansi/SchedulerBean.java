@@ -1,15 +1,19 @@
 package cz.milansi;
 
 
-import de.mirkosertic.cdicron.api.Cron;
+//import de.mirkosertic.cdicron.api.Cron;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
+//import javax.inject.Inject;
+//import javax.inject.Named;
+//import javax.inject.Singleton;
 import java.io.Serializable;
 
-@Singleton
+@ApplicationScoped
 @Named
 public class SchedulerBean implements Serializable {
 
@@ -20,7 +24,7 @@ public class SchedulerBean implements Serializable {
     @Inject
     private transient ApplicationBean bean;
 
-    @Cron(cronExpression = "*/10 * * * * ?")
+//    @Cron(cronExpression = "*/10 * * * * ?")
     public void atSchedule() {
 
         switch (schedulerChannelType) {

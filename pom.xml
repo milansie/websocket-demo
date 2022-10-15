@@ -15,52 +15,106 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <openwebbeans-version>2.0.27</openwebbeans-version>
-        <tomcat-version>9.0.65</tomcat-version>
+        <tomcat-version>10.1.0</tomcat-version>
+        <slf4j-version>2.0.3</slf4j-version>
+        <log4j-version>2.18.0</log4j-version>
+
     </properties>
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-websocket</artifactId>
-            <version>${tomcat-version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.tomcat</groupId>-->
+<!--            <artifactId>tomcat-websocket</artifactId>-->
+<!--            <version>${tomcat-version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-jsf</artifactId>
-            <version>${openwebbeans-version}</version>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-shaded</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.openwebbeans</groupId>-->
+<!--            <artifactId>openwebbeans-jsf</artifactId>-->
+<!--            <version>${openwebbeans-version}</version>-->
+<!--            <classifier>jakarta</classifier>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-web</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-el22</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-impl</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-spi</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.openwebbeans</groupId>-->
+<!--            <artifactId>openwebbeans-web</artifactId>-->
+<!--            <version>${openwebbeans-version}</version>-->
+<!--            <classifier>jakarta</classifier>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-el22</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-impl</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-spi</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.openwebbeans</groupId>-->
+<!--            <artifactId>openwebbeans-el22</artifactId>-->
+<!--            <version>${openwebbeans-version}</version>-->
+<!--            <classifier>jakarta</classifier>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.openwebbeans</groupId>-->
+<!--            <artifactId>openwebbeans-impl</artifactId>-->
+<!--            <version>${openwebbeans-version}</version>-->
+<!--            <classifier>jakarta</classifier>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.apache.openwebbeans</groupId>-->
+<!--                    <artifactId>openwebbeans-spi</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.openwebbeans</groupId>-->
+<!--            <artifactId>openwebbeans-spi</artifactId>-->
+<!--            <version>${openwebbeans-version}</version>-->
+<!--            <classifier>jakarta</classifier>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-web</artifactId>
-            <version>${openwebbeans-version}</version>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>4.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-spi</artifactId>
-            <version>${openwebbeans-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-impl</artifactId>
-            <version>${openwebbeans-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.openwebbeans</groupId>
-            <artifactId>openwebbeans-resource</artifactId>
-            <version>${openwebbeans-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>2.0.SP1</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -69,13 +123,14 @@
         <dependency>
             <groupId>org.omnifaces</groupId>
             <artifactId>omnifaces</artifactId>
-            <version>3.13.4</version>
+            <version>4.0</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version>
         </dependency>
+
 
 
         <dependency>
@@ -84,10 +139,56 @@
             <version>2.3.2</version>
         </dependency>
         <dependency>
-            <groupId>de.mirkosertic.cdicron</groupId>
-            <artifactId>cdi-cron-quartz-scheduler</artifactId>
-            <version>1.0</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.4.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+
+
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-jdk14</artifactId>-->
+<!--            <version>${slf4j-version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>jcl-over-slf4j</artifactId>-->
+<!--            <version>${slf4j-version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>log4j-over-slf4j</artifactId>-->
+<!--            <version>${slf4j-version}</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.logging.log4j</groupId>-->
+<!--            <artifactId>log4j-to-slf4j</artifactId>-->
+<!--            <version>${log4j-version}</version>-->
+<!--        </dependency>-->
+
+
+        <!--        <dependency>-->
+<!--            <groupId>de.mirkosertic.cdicron</groupId>-->
+<!--            <artifactId>cdi-cron-quartz-scheduler</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -109,9 +210,10 @@
     </build>
 
     <profiles>
+
         <profile>
             <id>
-                myfaces-2.3-next-M7
+                myfaces-4.0.0-RC1
             </id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -120,31 +222,36 @@
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
                     <artifactId>myfaces-api</artifactId>
-                    <version>2.3-next-M7</version>
+                    <version>4.0.0-RC1</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
                     <artifactId>myfaces-impl</artifactId>
-                    <version>2.3-next-M7</version>
+                    <version>4.0.0-RC1</version>
                 </dependency>
+
             </dependencies>
         </profile>
 
         <profile>
             <id>
-                myfaces-2.3-next-SNAPSHOT
+                myfaces-4.0.0-SNAPSHOT
             </id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <dependencies>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
                     <artifactId>myfaces-api</artifactId>
-                    <version>2.3-next-SNAPSHOT</version>
+                    <version>4.0.0-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>org.apache.myfaces.core</groupId>
                     <artifactId>myfaces-impl</artifactId>
-                    <version>2.3-next-SNAPSHOT</version>
+                    <version>4.0.0-SNAPSHOT</version>
                 </dependency>
+
             </dependencies>
         </profile>
 

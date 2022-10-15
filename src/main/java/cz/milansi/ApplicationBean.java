@@ -1,20 +1,23 @@
 package cz.milansi;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.push.Push;
+import jakarta.faces.push.PushContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.omnifaces.config.OmniFaces;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.push.Push;
-import javax.faces.push.PushContext;
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.util.concurrent.CompletableFuture;
+import java.util.logging.Logger;
 
 @Named
 @ApplicationScoped
 public class ApplicationBean implements Serializable {
+
+    private static final Logger LOG = Logger.getLogger(ApplicationBean.class.getName());
 
 
     @Inject

@@ -1,8 +1,13 @@
 package cz.milansi;
 
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
+//import javax.enterprise.context.SessionScoped;
+//import javax.inject.Inject;
+//import javax.inject.Named;
 import java.io.Serializable;
 
 @SessionScoped
@@ -43,5 +48,10 @@ public class SessionBean implements Serializable {
 
     public void omniFuturePush(String s) {
         applicationBean.omniFuturePush(s);
+    }
+
+    public String invalidateSession() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/?faces-redirect=true";
     }
 }
